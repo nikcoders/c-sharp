@@ -1,0 +1,66 @@
+name: Test changes
+
+on:
+    push:
+        branches:
+            - '*'         # matches every branch that doesn't contain a '/'
+            - '*/*'       # matches every branch containing a single '/'
+            - '**'        # matches every branch
+            - '!main'     # excludes main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 6.0.x
+
+            - name: Check if forbidden files have been modified (e.g. tests)
+              id: forbidden-changes
+              uses: tj-actions/changed-files@v11.9
+              with:
+                  files: |
+                      \.github
+                      tests
+
+            - name: Fail if forbidden files have changed
+              if: steps.forbidden-changes.outputs.any_changed == 'true'
+              run: |
+                  echo "One or more forbiden files have changed."
+                  exit 1
+
+            # - name: Run tests (stdout)
+            #   run: |
+            #       set +eo pipefail
+            #       echo 'RESULTS<<EOF' >> $GITHUB_ENV
+            #       dotnet test &>> $GITHUB_ENV
+            #       echo 'EOF' >> $GITHUB_ENV
+
+            - name: Run tests (trx)
+              run: |
+                  set +eo pipefail
+                  dotnet test --logger trx --results-directory results
+                  cd results
+                  trxname=$(ls)
+                  trxfile=$(<$trxname)
+                  echo 'RESULTS<<EOF' >> $GITHUB_ENV
+                  echo "$trxfile" >> $GITHUB_ENV
+                  echo 'EOF' >> $GITHUB_ENV
+
+            - name: Post Results
+              uses: indiesdev/curl@v1
+              with:
+                  url: ${{ secrets.RESULTSENDPOINT }}
+                  method: "POST"
+                  accept: 200,201,204
+                  headers: '{ "Content-Type": "text/plain", "Author": "${{ github.actor }}", "Repository": "${{ github.repository }}", "Branch": "${{ github.ref_name }}" }'
+                  body: "${{ env.RESULTS }}"
+                  timeout: 10000
+                  is_debug: true
