@@ -11,7 +11,7 @@ namespace YINI_Challenges
         /// <summary>
         /// It has been a busy year at mountain warehouse having made lots of sales.
         /// Management would like to know which month made the most in revenue.
-        /// For this challenge you will be given an 3-d array which contains 3 strings:
+        /// For this challenge you will be given an 2-d array which contains 3 strings:
         /// The name of the item,, The price of the item, The month it was sold in given by first three letters of the month.
         /// For example: [Jacket, £30, Jan]
         /// </summary>

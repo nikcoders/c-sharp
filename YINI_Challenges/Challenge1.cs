@@ -12,8 +12,8 @@ namespace YINI_Challenges
         /// <param name="taxRate">The tax rate to be applied. E.g. 50% = 0.5</param>
         /// <returns>Returns the price including tax.</returns>
         public static decimal Add_Tax(decimal amount, decimal taxRate) {
-            return amount * (1 + taxRate);
-            //throw new NotImplementedException();
+            //return amount * (1 + taxRate);
+            throw new NotImplementedException();
 
         }
         /// <summary>
@@ -23,8 +23,7 @@ namespace YINI_Challenges
         /// <param name="discount">The percentage off the rrp to be applied. E.g. 10% = 0.1</param>
         /// <returns>Returns the price after discount.</returns>
         public static decimal Discount(decimal rrp, decimal discount) {
-            return rrp * (1 - discount);
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Buy two items and get the cheapest one for half price.
@@ -33,11 +32,7 @@ namespace YINI_Challenges
         /// <param name="item2">The second item</param>
         /// <returns>Returns total value of goods</returns>
         public static decimal Buy_One_Get_One_Half_Price(decimal item1, decimal item2) {
-            if (item1 < item2) {
-                return item2 + (item1 * (1 - 0.5m));
-            }
-            return item1 + (item2 * (1 - 0.5m));
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>

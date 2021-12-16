@@ -31,14 +31,14 @@ namespace Unit_Tests
             return Challenge1.Buy_One_Get_One_Half_Price(item1, item2);
         }
 
-        [TestCaseSource(nameof(DivideCases))]
+        [TestCaseSource(nameof(priceList))]
         public void Challenge1_Calculate_Total_Cost(decimal[] list)
         {
             foreach (var item in list)
                 Assert.AreEqual(15, Challenge1.Calculate_Total_Cost(list));
         }
 
-        private static readonly object[] DivideCases =
+        private static readonly object[] priceList =
             new object[] { new decimal[] {1,2,3,4,5} };
     }
 }
