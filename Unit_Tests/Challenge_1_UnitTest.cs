@@ -18,6 +18,7 @@ namespace Unit_Tests
         }
 
         [TestCase(10, 0.2, ExpectedResult = 8)]
+        [TestCase(78, 0.4, ExpectedResult = 46.8)]
         public decimal Challenge1_Discount(decimal rrp, decimal taxRate)
         {
             return Challenge1.Discount(rrp, taxRate);
@@ -30,7 +31,14 @@ namespace Unit_Tests
             return Challenge1.Buy_One_Get_One_Half_Price(item1, item2);
         }
 
-        
+        [TestCaseSource(nameof(DivideCases))]
+        public void Challenge1_Calculate_Total_Cost(decimal[] list)
+        {
+            foreach (var item in list)
+                Assert.AreEqual(15, Challenge1.Calculate_Total_Cost(list));
+        }
 
+        private static readonly object[] DivideCases =
+            new object[] { new decimal[] {1,2,3,4,5} };
     }
 }
