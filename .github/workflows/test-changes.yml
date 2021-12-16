@@ -60,7 +60,7 @@ jobs:
                   url: ${{ secrets.RESULTSENDPOINT }}
                   method: "POST"
                   accept: 200,201,204
-                  headers: '{ "Content-Type": "text/plain", "Author": "${{ github.actor }}", "Repository": "${{ github.repository }}", "Branch": "${{ github.ref_name }}" }'
+                  headers: '{ "Content-Type": "text/plain", "Lang": "csharp", "Author": "${{ github.actor }}", "Repository": "${{ github.repository }}", "Branch": "${{ github.ref_name }}" }'
                   body: "${{ env.RESULTS }}"
                   timeout: 10000
                   is_debug: true
