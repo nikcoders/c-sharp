@@ -1,38 +1,41 @@
 using NUnit.Framework;
+using System;
 using YINI_Challenges;
 
 namespace Unit_Tests
 {
     public class Challenge_3_UnitTest
     {
-        [SetUp]
-        public void Setup()
+        private static object[] Challenge3_CalculateBestBranch_TestCases =
         {
-        }
+            new object[]
+            {
+                new SalesItem[]
+                {
+                    new SalesItem{ Branch = "ABC", TotalSales = 100, Date = DateTime.Today },
+                    new SalesItem{ Branch = "ABC", TotalSales = 50, Date = DateTime.Today.AddDays(-1) },
+                    new SalesItem{ Branch = "ABC", TotalSales = 400, Date = DateTime.Today.AddDays(-2) },
+                    new SalesItem{ Branch = "DEF", TotalSales = 200, Date = DateTime.Today }
+                }, "ABC"
+            },
+            new object[]
+            {
+                new SalesItem[]
+                {
+                    new SalesItem{ Branch = "ABC", TotalSales = 100, Date = DateTime.Today },
+                    new SalesItem{ Branch = "ABC", TotalSales = 50, Date = DateTime.Today.AddDays(-1) },
+                    new SalesItem{ Branch = "ABC", TotalSales = 200, Date = DateTime.Today.AddDays(-2) },
+                    new SalesItem{ Branch = "DEF", TotalSales = 500, Date = DateTime.Today }
+                }, "DEF"
+            }
+        };
 
-        [Test]
-        public void Challenge3_Bugfix_1()
+        [TestCaseSource(nameof(Challenge3_CalculateBestBranch_TestCases))]
+        public void Challenge3_CalculateBestMonth(SalesItem[] itemList,string expectedResult)
         {
-            int[] numbers = { 1, 2, 3, 4 };
-            int min = Challenge3.bugfix(numbers);
-            Assert.AreEqual(1, min);
+            Assert.AreEqual(expectedResult, Challenge3.CalculateBestBranch(itemList));
         }
-
-        [Test]
-        public void Challenge3_Bugfix_2()
-        {
-            int[] numbers = { 1, 2, -3, 4 };
-            int min = Challenge3.bugfix(numbers);
-            Assert.AreEqual(-3, min);
-        }
-
-        [Test]
-        public void Challenge3_Bugfix_3()
-        {
-            int[] numbers = { 1, 2, -3, 4, 5, -99, 100000, -92 };
-            int min = Challenge3.bugfix(numbers);
-            Assert.AreEqual(-99, min);
-        }
-
     }
+
+    
 }

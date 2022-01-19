@@ -1,26 +1,39 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace YINI_Challenges
 {
     public static class Challenge3
     {
         /// <summary>
-        /// During your time at mountain warheouse you will often have to go bug fix your own (and other peoples!) code.
-        /// In this next challenge a min sort has been written, however there are 3 bugs within the code.
-        /// See if you can find them all! 
+        /// It has been a busy year at mountain warehouse, having made lots of sales.
+        /// Management would like to know which branch made the most in revenue.
+        /// For this challenge you will be given an array of sales broken down by Branch and Date.  
+        /// You will need to sum all branch across multiple days and identify which branch had the highest sales overall
+        /// Assume that there is only one branch with the highest total
+        /// We have provided some starting code but if you know of a better method then go ahead with that
         /// </summary>
-        /// <param name="numbers"></param>
-        /// <returns></returns>
-        public static int bugfix(int[] numbers){
-            int min = -999999999;
-            for (int i = 0; i > numbers.Length; i++)
-            {
-                if (min < numbers[i])
-                {
-                    min = numbers[i];
-                }
-            }
+        /// <param name="sales">The array of sales items</param>
+        /// <returns>The branch with the best performing sales</returns>
+        public static string CalculateBestBranch(SalesItem[] sales) 
+        {
+            var branchSales = new Dictionary<string, decimal>();
+
+            // Implement your code here
             throw new NotImplementedException();
+
+            var orderedSales = branchSales.OrderByDescending(x => x.Value);
+            var firstHighest = orderedSales.First();
+
+            return firstHighest.Key;
         }
+    }
+
+    public class SalesItem
+    {
+        public string Branch { get; set; }
+        public decimal TotalSales { get; set; }
+        public DateTime Date { get; set; }
     }
 }
