@@ -5,11 +5,6 @@ namespace Unit_Tests
 {
     public class Challenge_2_UnitTest
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         private static object[] Challenge3_TestCases =
         {
             new object[] { new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 1 },
