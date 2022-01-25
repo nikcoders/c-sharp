@@ -17,7 +17,7 @@ namespace Unit_Tests
         };
 
         [TestCaseSource(nameof(Challenge3_TestCases))]
-        public void Challenge3_Bugfix_1(int[] numbers, int expectedResult)
+        public void Challenge2_ReturnSmallestValueInArray_ShouldReturnValidValue(int[] numbers, int expectedResult)
         {
             Assert.AreEqual(expectedResult, Challenge2.ReturnSmallestValueInArray(numbers));
         }
