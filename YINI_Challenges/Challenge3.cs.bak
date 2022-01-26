@@ -21,21 +21,6 @@ namespace YINI_Challenges
             var branchSales = new Dictionary<string, decimal>();
 
             // Implement your code here
-			for (int i = 0; i < sales.Length; i++) 
-			{
-				string branch = sales[i].Branch;
-				if (!branchSales.ContainsKey(branch)) 
-				{
-					branchSales.add(sales.Branch, sales.TotalSales);
-				}
-				else 
-				{
-					decimal addSales;
-					addSales = branchSales(branch) + sales.TotalSales;
-					branchSales(branch) = addSales;
-				}
-			}
-			
             // throw new NotImplementedException();
 
             var orderedSales = branchSales.OrderByDescending(x => x.Value);
