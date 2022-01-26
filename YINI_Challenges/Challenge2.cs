@@ -15,11 +15,13 @@ namespace YINI_Challenges
         /// <returns></returns>
         public static int ReturnSmallestValueInArray(int[] numbers)
         {
-            int min = int.MinValue;
+            // int min = int.MinValue;
+            int min = int.MaxValue;
 			// for (int i = 0; i > numbers.Length; i++)
 			for (int i = 0; i < numbers.Length; i++)
             {
-                if (min < numbers[i])
+                // if (min < numbers[i])
+                if (min > numbers[i])
                 {
                     min = numbers[i];
                 }

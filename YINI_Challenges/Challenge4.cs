@@ -34,19 +34,19 @@ namespace YINI_Challenges
             
             if (startingValueForTax > 1500000)
             {
-				return (0 + 31250 + 57500 + ((propertyPrice - 1500000) * 0.12));
+				return (0 + 31250 + 57500 + ((propertyPrice - 1500000) * 12/100));
                 // throw new NotImplementedException();
             }
 
             if (startingValueForTax > 925000)
             {
-				return (0 + 31250 + ((propertyPrice - 925000) * 0.1));
+				return (0 + 31250 + ((propertyPrice - 925000) * 10/100));
                 // throw new NotImplementedException();
             }
 
             if (startingValueForTax > 300000)
             {
-				return (0 + ((propertyPrice - 300000) * 0.05));
+				return (0 + ((propertyPrice - 300000) * 5/100));
                 // throw new NotImplementedException();
             }
 

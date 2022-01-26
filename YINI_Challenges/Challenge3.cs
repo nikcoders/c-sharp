@@ -26,13 +26,13 @@ namespace YINI_Challenges
 				string branch = sales[i].Branch;
 				if (!branchSales.ContainsKey(branch)) 
 				{
-					branchSales.add(sales.Branch, sales.TotalSales);
+					branchSales.Add(sales[i].Branch, sales[i].TotalSales);
 				}
 				else 
 				{
 					decimal addSales;
-					addSales = branchSales(branch) + sales.TotalSales;
-					branchSales(branch) = addSales;
+					addSales = branchSales[branch] + sales[i].TotalSales;
+					branchSales[branch] =  addSales;
 				}
 			}
 			
