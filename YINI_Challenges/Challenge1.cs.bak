@@ -27,7 +27,7 @@ namespace YINI_Challenges
         /// <returns>Returns the price after discount.</returns>
         public static decimal Discount(decimal currentPrice, decimal discount)
         {
-			return (currentPrice - (currentPrice * discount/100));
+			return (currentPrice-(currentPrice * discount/100));
             // throw new NotImplementedException();
         }
 
