@@ -15,15 +15,20 @@ namespace YINI_Challenges
         /// <returns></returns>
         public static int ReturnSmallestValueInArray(int[] numbers)
         {
-            int min = int.MinValue;
-            for (int i = 0; i > numbers.Length; i++)
+            if (numbers.Length == 0) // Fixed to return 0 if array is length 0
             {
-                if (min < numbers[i])
+                return 0;
+            }
+
+            int min = numbers[0]; // Fixed to start comparing from index 0, rather than int.Min, as no numbers would be smaller than this
+            for (int i = 0; i < numbers.Length; i++) // Fixed to properly loop through until numbers.Length
+            {
+                if (numbers[i] < min) // Fixed compare sign between integers
                 {
                     min = numbers[i];
                 }
             }
-            return 1;
+            return min;
         }
     }
 }
