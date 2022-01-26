@@ -29,22 +29,26 @@ namespace YINI_Challenges
             if (propertyPrice <= 300001) 
                 return 0;
 
-            var startingValueForTax = propertyPrice;
-            var tax = 0m;
-            
-            if (startingValueForTax > 1500000)
+            decimal tax = 0m;
+
+            decimal taxBracket12 = 1500001m;
+            decimal taxBracket10 = 925001m;
+            decimal taxBracket5 = 300001m;
+
+
+            if (propertyPrice >= taxBracket12)
             {
-                throw new NotImplementedException();
+                tax += Math.Round(((propertyPrice - taxBracket12) * 0.12m));
             }
 
-            if (startingValueForTax > 925000)
+            if (propertyPrice >= taxBracket10)
             {
-                throw new NotImplementedException();
+                tax += Math.Round((Math.Min(taxBracket12 - 1m, propertyPrice) - taxBracket10) * 0.1m);
             }
 
-            if (startingValueForTax > 300000)
+            if (propertyPrice >= taxBracket5)
             {
-                throw new NotImplementedException();
+                tax += Math.Round((Math.Min(taxBracket10 - 1m, propertyPrice) - taxBracket5) * 0.05m);
             }
 
             return Math.Round(tax, 0);
