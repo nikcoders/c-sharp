@@ -14,7 +14,7 @@ namespace YINI_Challenges
         /// <returns>Returns the price including tax.</returns>
         public static decimal Add_Tax(decimal nonTaxAmount, decimal taxRate)
         {
-            throw new NotImplementedException();
+            return nonTaxAmount + (nonTaxAmount * taxRate);
         }
 
         /// <summary>
@@ -26,7 +26,12 @@ namespace YINI_Challenges
         /// <returns>Returns the price after discount.</returns>
         public static decimal Discount(decimal currentPrice, decimal discount)
         {
-            throw new NotImplementedException();
+            if (discount >= 1 || discount < 0)
+            {
+                return -1;
+            }
+
+            return currentPrice - (currentPrice * discount);
         }
 
         /// <summary>
@@ -37,7 +42,8 @@ namespace YINI_Challenges
         /// <returns>Returns total value of goods</returns>
         public static decimal Buy_One_Get_One_Half_Price(decimal item1, decimal item2)
         {
-            throw new NotImplementedException();
+            decimal cheapestPrice = item1 > item2 ? item2 : item1; // The cheapest of the two items
+            return cheapestPrice / 2 + (cheapestPrice == item1 ? item2 : item1); // Adds half off the cheapest item to whatever the other item is
         }
 
         /// <summary>
@@ -47,7 +53,14 @@ namespace YINI_Challenges
         /// <returns>Returns total value of goods</returns>
         public static decimal Calculate_Total_Cost(decimal[] amounts)
         {
-            throw new NotImplementedException();
+            //return amounts.Sum(); //If LinQ is allowed?
+
+            int sum = 0;
+            foreach(int amount in amounts)
+            {
+                sum += amount;
+            }
+            return sum;
         }
     }
 }
