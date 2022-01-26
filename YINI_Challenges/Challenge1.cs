@@ -14,7 +14,7 @@ namespace YINI_Challenges
         /// <returns>Returns the price including tax.</returns>
         public static decimal Add_Tax(decimal nonTaxAmount, decimal taxRate)
         {
-            throw new NotImplementedException();
+            return nonTaxAmount + (taxRate*nonTaxAmount);
         }
 
         /// <summary>
@@ -26,7 +26,9 @@ namespace YINI_Challenges
         /// <returns>Returns the price after discount.</returns>
         public static decimal Discount(decimal currentPrice, decimal discount)
         {
-            throw new NotImplementedException();
+            if(discount <= 0)
+                return -1;
+            return currentPrice - (discount*currentPrice);
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace YINI_Challenges
         /// <returns>Returns total value of goods</returns>
         public static decimal Buy_One_Get_One_Half_Price(decimal item1, decimal item2)
         {
-            throw new NotImplementedException();
+            
         }
 
         /// <summary>
